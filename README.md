@@ -1,5 +1,7 @@
 # err
 
+[![GCC](https://github.com/jan-moeller/err/actions/workflows/gcc.yml/badge.svg)](https://github.com/jan-moeller/err/actions/workflows/gcc.yml)
+
 Err is a tiny library providing `err::error`, a class template to use with error
 enumerations and `std::expected`.
 
