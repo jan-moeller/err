@@ -37,51 +37,57 @@ TEST_CASE("constructibility from related error", "[error]")
         bar,
         baz,
     };
-    CHECK(std::is_constructible_v<error<foo>, error<foo>> && std::is_convertible_v<error<foo>, error<foo>>);
+    CHECK(std::is_nothrow_constructible_v<error<foo>, error<foo>> && std::is_convertible_v<error<foo>, error<foo>>);
     CHECK(!std::is_constructible_v<error<foo>, error<bar>> && !std::is_convertible_v<error<bar>, error<foo>>);
     CHECK(!std::is_constructible_v<error<foo>, error<baz>> && !std::is_convertible_v<error<baz>, error<foo>>);
 
-    CHECK(std::is_constructible_v<error<bar>, error<bar>> && std::is_convertible_v<error<bar>, error<bar>>);
+    CHECK(std::is_nothrow_constructible_v<error<bar>, error<bar>> && std::is_convertible_v<error<bar>, error<bar>>);
     CHECK(!std::is_constructible_v<error<bar>, error<foo>> && !std::is_convertible_v<error<foo>, error<bar>>);
     CHECK(!std::is_constructible_v<error<bar>, error<baz>> && !std::is_convertible_v<error<baz>, error<bar>>);
 
-    CHECK(std::is_constructible_v<error<baz>, error<baz>> && std::is_convertible_v<error<baz>, error<baz>>);
+    CHECK(std::is_nothrow_constructible_v<error<baz>, error<baz>> && std::is_convertible_v<error<baz>, error<baz>>);
     CHECK(!std::is_constructible_v<error<baz>, error<foo>> && !std::is_convertible_v<error<foo>, error<baz>>);
     CHECK(!std::is_constructible_v<error<baz>, error<bar>> && !std::is_convertible_v<error<bar>, error<baz>>);
 
-    CHECK(std::is_constructible_v<error<foo, bar>, error<foo>> && std::is_convertible_v<error<foo>, error<foo, bar>>);
-    CHECK(std::is_constructible_v<error<foo, bar>, error<bar>> && std::is_convertible_v<error<bar>, error<foo, bar>>);
-    CHECK(std::is_constructible_v<error<foo, bar>, error<foo, bar>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar>, error<foo>>
+          && std::is_convertible_v<error<foo>, error<foo, bar>>);
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar>, error<bar>>
+          && std::is_convertible_v<error<bar>, error<foo, bar>>);
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar>, error<foo, bar>>
           && std::is_convertible_v<error<foo, bar>, error<foo, bar>>);
     CHECK(std::is_constructible_v<error<foo, bar>, error<foo, bar, baz>>
           && !std::is_convertible_v<error<foo, bar, baz>, error<foo, bar>>);
     CHECK(!std::is_constructible_v<error<foo, bar>, error<baz>> && !std::is_convertible_v<error<baz>, error<foo, bar>>);
 
-    CHECK(std::is_constructible_v<error<foo, baz>, error<foo>> && std::is_convertible_v<error<foo>, error<foo, baz>>);
-    CHECK(std::is_constructible_v<error<foo, baz>, error<baz>> && std::is_convertible_v<error<baz>, error<foo, baz>>);
-    CHECK(std::is_constructible_v<error<foo, baz>, error<foo, baz>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, baz>, error<foo>>
+          && std::is_convertible_v<error<foo>, error<foo, baz>>);
+    CHECK(std::is_nothrow_constructible_v<error<foo, baz>, error<baz>>
+          && std::is_convertible_v<error<baz>, error<foo, baz>>);
+    CHECK(std::is_nothrow_constructible_v<error<foo, baz>, error<foo, baz>>
           && std::is_convertible_v<error<foo, baz>, error<foo, baz>>);
     CHECK(std::is_constructible_v<error<foo, baz>, error<foo, bar, baz>>
           && !std::is_convertible_v<error<foo, bar, baz>, error<foo, baz>>);
     CHECK(!std::is_constructible_v<error<foo, baz>, error<bar>> && !std::is_convertible_v<error<bar>, error<foo, baz>>);
 
-    CHECK(std::is_constructible_v<error<bar, baz>, error<bar>> && std::is_convertible_v<error<bar>, error<bar, baz>>);
-    CHECK(std::is_constructible_v<error<bar, baz>, error<baz>> && std::is_convertible_v<error<baz>, error<bar, baz>>);
-    CHECK(std::is_constructible_v<error<bar, baz>, error<bar, baz>>
+    CHECK(std::is_nothrow_constructible_v<error<bar, baz>, error<bar>>
+          && std::is_convertible_v<error<bar>, error<bar, baz>>);
+    CHECK(std::is_nothrow_constructible_v<error<bar, baz>, error<baz>>
+          && std::is_convertible_v<error<baz>, error<bar, baz>>);
+    CHECK(std::is_nothrow_constructible_v<error<bar, baz>, error<bar, baz>>
           && std::is_convertible_v<error<bar, baz>, error<bar, baz>>);
     CHECK(std::is_constructible_v<error<bar, baz>, error<foo, bar, baz>>
           && !std::is_convertible_v<error<foo, bar, baz>, error<bar, baz>>);
     CHECK(!std::is_constructible_v<error<bar, baz>, error<foo>> && !std::is_convertible_v<error<foo>, error<bar, baz>>);
 
-    CHECK(std::is_constructible_v<error<foo, bar, baz>, error<foo>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar, baz>, error<foo>>
           && std::is_convertible_v<error<foo>, error<foo, bar, baz>>);
-    CHECK(std::is_constructible_v<error<foo, bar, baz>, error<bar>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar, baz>, error<bar>>
           && std::is_convertible_v<error<bar>, error<foo, bar, baz>>);
-    CHECK(std::is_constructible_v<error<foo, bar, baz>, error<baz>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar, baz>, error<baz>>
           && std::is_convertible_v<error<baz>, error<foo, bar, baz>>);
-    CHECK(std::is_constructible_v<error<foo, bar, baz>, error<bar, baz>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar, baz>, error<bar, baz>>
           && std::is_convertible_v<error<bar, baz>, error<foo, bar, baz>>);
-    CHECK(std::is_constructible_v<error<foo, bar, baz>, error<foo, bar, baz>>
+    CHECK(std::is_nothrow_constructible_v<error<foo, bar, baz>, error<foo, bar, baz>>
           && std::is_convertible_v<error<foo, bar, baz>, error<foo, bar, baz>>);
 
     CHECK(error<foo>{error<foo>{}} == foo);

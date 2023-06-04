@@ -86,7 +86,7 @@ class error_impl
     template<value_type... Es>
         requires(detail::is_overlap<value_type>({Es...}, {Enumerators...}))
     constexpr explicit(!detail::is_subset<value_type>({Es...}, {Enumerators...}))
-        error_impl(error_impl<Es...> other) noexcept
+        error_impl(error_impl<Es...> other) noexcept(detail::is_subset<value_type>({Es...}, {Enumerators...}))
         : m_value(static_cast<value_type>(other))
     {
         assert(((static_cast<value_type>(other) == Enumerators) || ...));

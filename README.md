@@ -66,7 +66,7 @@ struct error
     
     template<value_type... Es>
         requires /* see below */
-    constexpr explicit(/* see below */) error(error<Es...> other) noexcept;
+    constexpr explicit(/* see below */) error(error<Es...> other) noexcept(/* see below */);
     
     template<value_type... Es>
         requires /* see below */
@@ -159,6 +159,9 @@ are *related*. Such construction is implicit only from *closely related*
 In the case of an explicit construction, if the `error` used to call this
 constructor contains a value not in the list of `possible_values`, behavior is
 undefined.
+
+The constructor is `noexcept(true)` iff it is not `explicit`. Otherwise, it is
+`noexcept(false)`.
 
 Direct assignment is provided from *closely related* `error`s only.
 
