@@ -32,7 +32,7 @@ IncludeCategories:
     Priority: 5
   - Regex: "<(cstdlib|csignal|csetjmp|cstdarg|ctime|cstddef|climits|cfloat|cstdint|cinttypes|cassert|cerrno|cctype|cwctype|cstring|cwchar|cuchar|cmath|cfenv|clocale|cstdio)>"
     Priority: 4
-  - Regex: "<(concepts|coroutine|typeinfo|typeindex|type_traits|bitset|functional|utility|chrono|initializer_list|tuple|any|optional|variant|compare|version|source_location|stacktrace|new|memory|scoped_allocator|memory_resource|limits|exception|stdexcept|system_error|string|string_view|charconv|format|array|vector|deque|list|forward_list|set|map|unordered_set|unordered_map|stack|queue|span|iterator|ranges|algorithm|execution|complex|valarray|random|numeric|ratio|bit|numbers|locale|codecvt|iosfwd|ios|istream|ostream|iostream|fstream|sstream|syncstream|strstream|iomanip|streambuf|filesystem|regex|atomic|thread|stop_token|mutex|shared_mutex|future|condition_variable|semaphore|latch|barrier)>"
+  - Regex: "<(concepts|coroutine|typeinfo|typeindex|type_traits|bitset|functional|utility|chrono|initializer_list|tuple|any|optional|variant|compare|version|source_location|stacktrace|new|memory|scoped_allocator|memory_resource|limits|exception|stdexcept|system_error|string|string_view|charconv|format|array|vector|deque|list|forward_list|set|map|unordered_set|unordered_map|stack|queue|span|iterator|ranges|algorithm|execution|complex|valarray|random|numeric|ratio|bit|numbers|locale|codecvt|iosfwd|ios|istream|ostream|iostream|fstream|sstream|syncstream|strstream|iomanip|streambuf|filesystem|regex|atomic|thread|stop_token|mutex|shared_mutex|future|condition_variable|semaphore|latch|barrier|expected)>"
     Priority: 3
   - Regex: '<.*>'
     Priority: 2
