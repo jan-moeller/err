@@ -20,6 +20,7 @@ endif ()
 include(cmake/CPM.cmake)
 
 CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.11.0")
+CPMAddPackage("gh:jan-moeller/ctrx@1.0.0")
 
 #############################################################################################################
 # Build configuration
@@ -57,6 +58,7 @@ target_include_directories(
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
 )
+target_link_libraries(${PROJECT_NAME} INTERFACE ctrx::ctrx)
 
 string(TOLOWER ${PROJECT_NAME}/version.h VERSION_HEADER_LOCATION)
 packageProject(
@@ -68,7 +70,7 @@ packageProject(
         INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}
         VERSION_HEADER "${VERSION_HEADER_LOCATION}"
         COMPATIBILITY SameMajorVersion
-        DEPENDENCIES ""
+        DEPENDENCIES "ctrx 1.0.0"
 )
 
 #############################################################################################################

@@ -33,14 +33,13 @@
 #include "err/detail/is_subset.hpp"
 #include "err/detail/join_arrays.hpp"
 
-#include <expected>
+#include <ctrx/contracts.hpp>
 
 #include <array>
+#include <expected>
 #include <functional>
 #include <utility>
 #include <variant>
-
-#include <cassert>
 
 namespace err::detail
 {
@@ -80,7 +79,7 @@ class error_impl
     constexpr explicit error_impl(value_type other)
         : m_value(other)
     {
-        assert(((other == Enumerators) || ...));
+        CTRX_PRECONDITION(((other == Enumerators) || ...));
     }
 
     template<value_type... Es>
@@ -89,7 +88,7 @@ class error_impl
         error_impl(error_impl<Es...> other) noexcept(detail::is_subset<value_type>({Es...}, {Enumerators...}))
         : m_value(static_cast<value_type>(other))
     {
-        assert(((static_cast<value_type>(other) == Enumerators) || ...));
+        CTRX_PRECONDITION(((static_cast<value_type>(other) == Enumerators) || ...));
     }
 
     template<value_type... Es>
